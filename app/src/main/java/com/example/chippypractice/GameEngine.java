@@ -1,6 +1,8 @@
 package com.example.chippypractice;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.view.SurfaceView;
@@ -22,14 +24,16 @@ public class GameEngine extends SurfaceView implements Runnable {
 
         this.screenx = screenX;
         this.screenY = screenY;
-        screenRatioX = 1920f/ screenX;
-        screenRatioY = 1080f/ screenY;
+        screenRatioX = 2200f/screenX;
+        screenRatioY = 1080f/screenY;
         background1 = new Background(screenX,screenY,getResources());
         background2 = new Background(screenX,screenY,getResources());
 
-        background2.x = screenX; // to be placed juat after rhe screen ends on the x axis
+        background2.x = screenX; // to be placed just after rhe screen ends on the x axis
 
         paintbrush = new Paint();
+
+
     }
 
     @Override
@@ -47,6 +51,7 @@ public class GameEngine extends SurfaceView implements Runnable {
     }
     public void update()
     {
+
         background1.x -= 20 * screenRatioX;
         background2.x -= 20 * screenRatioX;  // move towards x axis by 10
 

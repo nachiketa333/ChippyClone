@@ -6,14 +6,14 @@ import android.graphics.BitmapFactory;
 
 public class Background {
 
-    int x, y;
+    int x = 0, y = 0;
 
     Bitmap background;
 
 
     Background (int screenX, int screenY, Resources res)
     {
-        background = BitmapFactory.decodeResource(res,R.drawable.background);
+        background = BitmapFactory.decodeResource(res, R.drawable.background);
         background = Bitmap.createScaledBitmap(background,screenX,screenY,false); // to set the background according to our device screen
     }
 }

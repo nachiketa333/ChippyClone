@@ -9,6 +9,7 @@ import static com.example.chippypractice.GameEngine.screenRatioY;
 
 public class Player {
 
+    public boolean isgoingUp = false;
     int x,y,width,height;
 
     Bitmap spaceShip1;
@@ -29,7 +30,7 @@ public class Player {
 
         spaceShip1 = Bitmap.createScaledBitmap(spaceShip1,width,height,false);
 
-        y = screenY /2;
+        y = (int) (screenY /2);
         x = (int) (64 * screenRatioX);
     }
 }

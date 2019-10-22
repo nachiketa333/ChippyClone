@@ -69,6 +69,24 @@ public class GameEngine extends SurfaceView implements Runnable {
         {
             background2.x = screenx;
         }
+
+        if (spaceship.isgoingUp)
+        {
+            spaceship.y -= 30 *  screenRatioY;
+        }
+        else
+        {
+            spaceship.y += 30 * screenRatioY;
+        }
+
+        if (spaceship.y < 0) {
+            spaceship.y = 0;
+        }
+        if (spaceship.y > screenx - spaceship.height) {
+            spaceship.y = screenY - spaceship.height;
+        }
+
+
     }
     public void draw()
     {
@@ -117,10 +135,12 @@ public class GameEngine extends SurfaceView implements Runnable {
 
         switch (event.getAction()){
             case MotionEvent.ACTION_DOWN:
-
+                    if (event.getX() < screenx / 2){
+                        spaceship.isgoingUp = true;
+                    }
                 break;
             case MotionEvent.ACTION_UP:
-
+                    spaceship.isgoingUp = false;
                 break;
         }
 

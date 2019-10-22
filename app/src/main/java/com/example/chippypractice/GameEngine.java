@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Paint;
+import android.view.MotionEvent;
 import android.view.SurfaceView;
 
 // Surface view is used when we have to change the content very quickly
@@ -15,8 +16,10 @@ public class GameEngine extends SurfaceView implements Runnable {
     private boolean isPlaying;
     private int screenx, screenY;
     private Paint paintbrush;
-    private float screenRatioX,screenRatioY;
+    public static float screenRatioX,screenRatioY;
+    private Player spaceship;
     private Background background1, background2;
+
 
     public GameEngine(Context context, int screenX, int screenY) {
         super(context);
@@ -24,14 +27,16 @@ public class GameEngine extends SurfaceView implements Runnable {
 
         this.screenx = screenX;
         this.screenY = screenY;
-        screenRatioX = 2200f/screenX;
-        screenRatioY = 1080f/screenY;
+        screenRatioX = 2560f/screenX;
+        screenRatioY = 1440f/screenY;
         background1 = new Background(screenX,screenY,getResources());
         background2 = new Background(screenX,screenY,getResources());
 
         background2.x = screenX; // to be placed just after rhe screen ends on the x axis
 
         paintbrush = new Paint();
+
+        spaceship = new Player(screenY, getResources());
 
 
     }
@@ -72,6 +77,8 @@ public class GameEngine extends SurfaceView implements Runnable {
             Canvas canvas = getHolder().lockCanvas();
             canvas.drawBitmap(background1.background,background1.x,background1.y,paintbrush);
             canvas.drawBitmap(background2.background,background2.x,background2.y,paintbrush);
+            canvas.drawBitmap(spaceship.spaceShip1,spaceship.x,spaceship.y,paintbrush);
+
             getHolder().unlockCanvasAndPost(canvas);
         }
     }
@@ -103,5 +110,20 @@ public class GameEngine extends SurfaceView implements Runnable {
         {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+
+        switch (event.getAction()){
+            case MotionEvent.ACTION_DOWN:
+
+                break;
+            case MotionEvent.ACTION_UP:
+
+                break;
+        }
+
+        return true;
     }
 }
